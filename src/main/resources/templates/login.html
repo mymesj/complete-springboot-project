@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" th:href="@{assets/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" rel="stylesheet">
 
 
     <style>
@@ -32,18 +32,19 @@
 
     </style>
     <!-- Custom styles for this template -->
-    <link href="assets/css/signin.css" th:href="@{assets/css/signin.css}" rel="stylesheet">
+    <link href="/assets/css/signin.css" th:href="@{/assets/css/signin.css}" rel="stylesheet">
 </head>
 <body class="text-center">
-<form class="form-signin" action="dashboard.html" method="post">
-    <img class="mb-4" src="assets/brand/bootstrap-solid.svg" th:src="@{assets/brand/bootstrap-solid.svg}" alt=""
+<form class="form-signin" action="dashboard.html" th:action="@{/user/login}" method="post" th:method="post">
+    <img class="mb-4" src="/assets/brand/bootstrap-solid.svg" th:src="@{/assets/brand/bootstrap-solid.svg}" alt=""
          width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
     <label for="inputEmail" class="sr-only" th:text="#{login.email}">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" th:placeholder="#{login.email}" placeholder="Email address"
+    <input type="email" id="inputEmail" name="email" class="form-control" th:placeholder="#{login.email}" placeholder="Email address"
            required autofocus>
     <label for="inputPassword" class="sr-only" th:text="#{login.password}">Password</label>
-    <input type="password" id="inputPassword" class="form-control" th:placeholder="#{login.password}"
+    <input type="password" id="inputPassword" name="password" class="form-control" th:placeholder="#{login.password}"
            placeholder="Password" required>
     <div class="checkbox mb-3">
         <label>
